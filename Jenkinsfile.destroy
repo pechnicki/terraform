@@ -1,0 +1,68 @@
+directory = env.JOB_BASE_NAME.split('-dev-')[0]
+
+pipeline {
+
+    agent {
+        label "performance-devops.ca-central-1.jenkinsci.slave"
+    }
+    
+    environment {
+        SVC_ACCOUNT_KEY = credentials('svc-jenkins-cicd.performance-dev')
+    }
+    
+    options {
+        gitLabConnection('gitportoprd')
+    }
+    
+    stages {
+        stage('CLEAN WORKSPACE') {
+            steps {
+                cleanWs()
+            }
+        }
+        
+        stage('CHECKOUT SCM') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('TERRAFORM INIT') {
+            steps {
+                dir("${directory}") {
+                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
+                        sh '${terraform_path}/terraform init'
+                    }
+                }
+            }
+        } 
+
+        stage('TERRAFORM PLAN') {
+            steps {
+                dir("${directory}") {
+                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
+                        sh '${terraform_path}/terraform plan -destroy'
+                    }
+                }
+            }
+        }
+
+        stage('APPROVAL') {
+            steps {
+                script {
+                    def APPROVAL = input(id: 'DESTROY', message: 'DESTROY TERRAFORM?', ok: 'YES')
+                }
+            }
+        }
+
+        stage('TERRAFORM DESTROY') {
+            steps {
+                dir("${directory}") {
+                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
+                        sh '${terraform_path}/terraform destroy -auto-approve'
+                    }
+                }
+            }
+        }
+    }
+}
