@@ -20,11 +20,6 @@ rds_allocated_storage = 20
 rds_username = "pechnicki"
 rds_port = 5432
 rds_subnet_group_name = "pechnicki-rds-subnet-group"
-# POSTGRESQL
-postgres_database = "pechnicki"
-postgres_owner = "pechnicki"
-postgres_role_api = "pechnicki_api"
-postgres_user_api = "api_user"
 # COGNITO
 cognito_user_pool = "pechnicki"
 cognito_user_pool_domain = "pechnicki"
