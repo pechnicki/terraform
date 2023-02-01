@@ -3,48 +3,43 @@ pipeline {
     agent any
 
     environment {
-        SVC_ACCOUNT_KEY = credentials('svc-jenkins-cicd.performance-dev')
+        AWS_CREDENTIALS = credentials('aws')
+        AWS_ACCESS_KEY_ID = AWS_CREDENTIALS_USR
+        AWS_SECRET_ACCESS_KEY = AWS_CREDENTIALS_PSW
     }
-
     stages {
         stage('TERRAFORM INIT') {
             steps {
                 dir(directory) {
-                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
-                        sh '${terraform_path}/terraform init'
-                    }
+                    sh 'terraform init'
                 }
             }
         }
         stage('TERRAFORM PLAN') {
             steps {
                 dir(directory) {
-                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
-                        sh '${terraform_path}/terraform plan'
-                    }
+                    sh 'terraform plan'
                 }
             }
         }
         stage('APPROVAL') {
             steps {
                 script {
-                    def APPROVAL = input(id: 'APPLY', message: 'APPLY TERRAFORM?', ok: 'YES')
+                    approval = input(id: 'APPLY', message: 'APPLY TERRAFORM?', ok: 'YES')
                 }
             }
         }
         stage('TERRAFORM APPLY') {
             steps {
                 dir(directory) {
-                    withEnv(["terraform_path=${tool 'terraform_0.15.3_linux_amd64'}"]) {
-                        sh '${terraform_path}/terraform apply -auto-approve'
-                    }
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
     }
-    /*post {
+    post {
         always {
             cleanWs()
         }
-    }*/
+    }
 }
