@@ -79,14 +79,14 @@ variable "s3_buckets" {
 }
 
 # KMS
-variable "kms_description" {
-  description = "kms_description"
-  type        = string
-}
-variable "kms_name" {
-  description = "kms_name"
-  type        = string
-}
+#variable "kms_description" {
+#  description = "kms_description"
+#  type        = string
+#}
+#variable "kms_name" {
+#  description = "kms_name"
+#  type        = string
+#}
 
 variable "secret_name_postgres_user_api" {
   description = "secret_name_postgres_user_api"

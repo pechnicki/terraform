@@ -1,7 +1,6 @@
 resource "aws_secretsmanager_secret" "user" {
   name                           = var.secret_name
   description                    = var.secret_desc
-  kms_key_id                     = data.terraform_remote_state.infraestrutura.outputs.kms_key.arn
   force_overwrite_replica_secret = true
   recovery_window_in_days        = 0
 }

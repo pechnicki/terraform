@@ -26,8 +26,8 @@ cognito_user_pool_domain = "pechnicki"
 # S3
 s3_buckets = ["pechnicki-lambda","pechnicki-amplify"]
 # KMS
-kms_name = "pechnicki-kms"
-kms_description = "Chave de encriptação para secrets utilizados no ambiente"
+#kms_name = "pechnicki-kms"
+#kms_description = "Chave de encriptação para secrets utilizados no ambiente"
 # SECRETS
 secret_name_postgres_user_api = "pechnicki_postgres_user_api"
 secret_desc_postgres_user_api = "Usuario para acesso de APIs ao RDS Postgres"

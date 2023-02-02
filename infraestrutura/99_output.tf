@@ -58,15 +58,10 @@ output "s3_bucket" {
   sensitive = true
 }
 
-output "kms_key" {
-  value     = aws_kms_key.kms_key
-  sensitive = true
-}
-
-output "kms_alias" {
-  value     = aws_kms_alias.kms_alias
-  sensitive = true
-}
+#output "kms_key" {
+#  value     = aws_kms_key.kms_key
+#  sensitive = true
+#}
 
 output "vpc" {
   value     = aws_vpc.vpc
