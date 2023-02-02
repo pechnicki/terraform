@@ -9,7 +9,7 @@ resource "aws_lambda_function" "function" {
   function_name     = var.function_name
   role              = var.role
   handler           = "index.handler"
-  runtime           = "nodejs16.x"
+  runtime           = "nodejs18.x"
   timeout           = var.timeout
   vpc_config {
     subnet_ids         = var.vpc ? data.terraform_remote_state.infraestrutura.outputs.private_subnet : []
