@@ -25,6 +25,3 @@ cognito_user_pool = "pechnicki"
 cognito_user_pool_domain = "pechnicki"
 # S3
 s3_buckets = ["pechnicki-lambda","pechnicki-amplify"]
-# KMS
-#kms_name = "pechnicki-kms"
-#kms_description = "Chave de encriptação para secrets utilizados no ambiente"
