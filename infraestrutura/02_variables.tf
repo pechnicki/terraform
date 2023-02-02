@@ -87,13 +87,3 @@ variable "s3_buckets" {
 #  description = "kms_name"
 #  type        = string
 #}
-
-variable "secret_name_postgres_user_api" {
-  description = "secret_name_postgres_user_api"
-  type        = string
-}
-
-variable "secret_desc_postgres_user_api" {
-  description = "secret_desc_postgres_user_api"
-  type        = string
-}

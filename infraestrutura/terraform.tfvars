@@ -13,7 +13,7 @@ sg_description = "SG para utilizacao do RDS pechnicki"
 rds_identifier = "pechnicki"
 rds_engine = "postgres"
 rds_engine_version = "14.3"
-rds_instance_class = "db.t3.micro"
+rds_instance_class = "db.t2.micro"
 rds_parameter_group_name = "default.postgres14"
 rds_storage_type = "gp2"
 rds_allocated_storage = 20
@@ -28,7 +28,3 @@ s3_buckets = ["pechnicki-lambda","pechnicki-amplify"]
 # KMS
 #kms_name = "pechnicki-kms"
 #kms_description = "Chave de encriptação para secrets utilizados no ambiente"
-# SECRETS
-secret_name_postgres_user_api = "pechnicki_postgres_user_api"
-secret_desc_postgres_user_api = "Usuario para acesso de APIs ao RDS Postgres"
-
