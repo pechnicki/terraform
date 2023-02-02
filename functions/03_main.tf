@@ -10,7 +10,7 @@ data "terraform_remote_state" "infraestrutura" {
 data "terraform_remote_state" "layers" {
   backend = "s3"
   config = {
-    bucket = "pechnicki-terraform-states-bucket"
+    bucket = "pechnicki-terraform-states"
     key = "layers.tfstate"
     region = var.aws_region
   }

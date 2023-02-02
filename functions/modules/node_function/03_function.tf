@@ -3,9 +3,6 @@ locals {
 }
 
 resource "aws_lambda_function" "function" {
-  depends_on = [
-    aws_s3_object.artifact
-  ]
   s3_bucket         = data.aws_s3_object.artifact.bucket
   s3_key            = data.aws_s3_object.artifact.key
   s3_object_version = data.aws_s3_object.artifact.version_id
@@ -15,7 +12,7 @@ resource "aws_lambda_function" "function" {
   runtime           = "nodejs16.x"
   timeout           = var.timeout
   vpc_config {
-    subnet_ids         = var.vpc ? data.aws_subnets.subnet_private.ids : []
+    subnet_ids         = var.vpc ? data.terraform_remote_state.infraestrutura.outputs.private_subnet : []
     security_group_ids = var.vpc ? [data.terraform_remote_state.infraestrutura.outputs.rds_sg.id] : []
   }
   dynamic "environment" {

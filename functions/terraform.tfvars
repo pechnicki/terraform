@@ -12,7 +12,7 @@ default_node_functions = {
   AdminNivelAcesso = "1.0.0"
   AdminPermissao = "1.0.0"
   AdminPermissaoAplicacao = "1.0.0"
-  # portal-performance
+  # teste-performance
   TestePerformanceAdminDepartamento = "1.0.0"
   TestePerformanceAdminEmpresa = "1.0.0"
   TestePerformanceAdminPlanoTeste = "1.0.0"
@@ -31,9 +31,9 @@ default_node_functions = {
 # caso seja necessario, modifique o modulo para novas funcionalidades
 # certifique-se de que ele seja retro-compativel
 node_functions = {
-  GoogleChatWebhook = "1.0.1"
   CASDMRequestDB = "1.0.0"
   CASDMRequestSOAP = "1.0.0"
   EnviaEmail = "1.0.0"
-  RequestDB = "1.0.1"
+  GoogleChatWebhook = "1.0.0"
+  RequestDB = "1.0.0"
 }
