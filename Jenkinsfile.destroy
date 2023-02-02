@@ -12,14 +12,14 @@ pipeline {
         stage('TERRAFORM INIT') {
             steps {
                 dir(directory) {
-                    sh 'terraform init'
+                    sh 'terraform init -no-color'
                 }
             }
         }
         stage('TERRAFORM PLAN') {
             steps {
                 dir(directory) {
-                    sh 'terraform plan -destroy'
+                    sh 'terraform plan -destroy -no-color'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('TERRAFORM DESTROY') {
             steps {
                 dir("${directory}") {
-                    sh 'terraform destroy -auto-approve'
+                    sh 'terraform destroy -auto-approve -no-color'
                 }
             }
         }

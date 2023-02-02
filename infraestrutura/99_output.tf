@@ -67,3 +67,18 @@ output "kms_alias" {
   value     = aws_kms_alias.kms_alias
   sensitive = true
 }
+
+output "vpc" {
+  value     = aws_vpc.vpc
+  sensitive = true
+}
+
+output "public_subnet" {
+  value     = aws_subnet.public_subnet[*].id
+  sensitive = true
+}
+
+output "private_subnet" {
+  value     = aws_subnet.private_subnet[*].id
+  sensitive = true
+}
