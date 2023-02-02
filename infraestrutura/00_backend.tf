@@ -4,10 +4,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.52"
     }
-    postgresql = {
-      source  = "cyrilgdn/postgresql"
-      version = "1.17.1"
-    }
   }
   backend "s3" {
     bucket = "pechnicki-terraform-states"
