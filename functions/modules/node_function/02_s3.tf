@@ -3,6 +3,6 @@ locals {
 }
 
 data "aws_s3_object" "artifact" {
-  bucket =  data.terraform_remote_state.infraestrutura.outputs.s3_bucket.pechnicki-lambda.bucket
+  bucket = data.terraform_remote_state.infraestrutura.outputs.s3_bucket.pechnicki-lambda.bucket
   key    = "functions/${local.artifact}"
 }

@@ -5,7 +5,7 @@ locals {
 resource "aws_lambda_function" "function" {
   s3_bucket        = data.aws_s3_object.artifact.bucket
   s3_key           = data.aws_s3_object.artifact.key
-  source_code_hash = data.aws_s3_object.artifact.body
+  source_code_hash = data.aws_s3_object.artifact.tags["sha256sum"]
   function_name    = var.function_name
   role             = var.role
   handler          = "index.handler"
