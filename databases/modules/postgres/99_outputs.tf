@@ -7,11 +7,14 @@ output "secret_version" {
 }
 */
 output "database" {
-  value = postgresql_database.database
+  value     = postgresql_database.database
+  sensitive = true
 }
 output "password" {
-  value = random_password.postgres_user_password.result
+  value     = random_password.postgres_user_password.result
+  sensitive = true
 }
 output "username" {
-  value = postgresql_database.database.owner
+  value     = postgresql_database.database.owner
+  sensitive = true
 }
