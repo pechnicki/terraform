@@ -6,7 +6,9 @@ module "RequestDB" {
   vpc              = true
   env_variables = {
     POSTGRES_HOST = data.terraform_remote_state.infraestrutura.outputs.rds.address,
-    POSTGRES_PORT = data.terraform_remote_state.infraestrutura.outputs.rds.port
+    POSTGRES_PORT = data.terraform_remote_state.infraestrutura.outputs.rds.port,
+    POSTGRES_USER = data.terraform_remote_state.databases.outputs.pechnicki.username,
+    POSTGRES_PWD  = data.terraform_remote_state.databases.outputs.pechnicki.password
   }
   layers = [
     data.terraform_remote_state.layers.outputs.node_layers.NodePostgres.arn,

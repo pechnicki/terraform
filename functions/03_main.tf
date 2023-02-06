@@ -16,3 +16,12 @@ data "terraform_remote_state" "layers" {
   }
 }
 
+data "terraform_remote_state" "databases" {
+  backend = "s3"
+  config = {
+    bucket = "pechnicki-terraform-states"
+    key = "databases.tfstate"
+    region = var.aws_region
+  }
+}
+
