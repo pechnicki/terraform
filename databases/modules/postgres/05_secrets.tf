@@ -1,3 +1,4 @@
+/* 
 resource "aws_secretsmanager_secret" "user" {
   name                           = var.secret_name
   description                    = var.secret_desc
@@ -14,3 +15,4 @@ resource "aws_secretsmanager_secret_version" "user_version" {
   }
   EOF
 }
+*/

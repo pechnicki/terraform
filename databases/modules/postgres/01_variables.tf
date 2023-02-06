@@ -16,13 +16,13 @@ variable "user" {
   description = "user"
   type        = string
 }
-
+/*
 variable "secret_name" {
   description = "secret_name"
   type        = string
 }
-
 variable "secret_desc" {
   description = "secret_name"
   type        = string
 }
+*/
